@@ -1,24 +1,47 @@
-# Uniswap V2
+# ETCswap V2 Core
 
-[![Actions Status](https://github.com/Uniswap/uniswap-v2-core/workflows/CI/badge.svg)](https://github.com/Uniswap/uniswap-v2-core/actions)
-[![Version](https://img.shields.io/npm/v/@uniswap/v2-core)](https://www.npmjs.com/package/@uniswap/v2-core)
+Core smart contracts for the ETCswap V2 AMM protocol on Ethereum Classic.
 
-In-depth documentation on Uniswap V2 is available at [uniswap.org](https://uniswap.org/docs).
+Forked from [Uniswap V2 Core](https://github.com/Uniswap/v2-core). The contracts are unmodified — ETCswap V2 uses the same constant-product AMM logic as Uniswap V2.
 
-The built contract artifacts can be browsed via [unpkg.com](https://unpkg.com/browse/@uniswap/v2-core@latest/).
+## Status: Reference Only
 
-# Local Development
+These contracts are deployed and immutable. This repo exists as a reference for the deployed bytecode. No further development is expected.
 
-The following assumes the use of `node@>=10`.
+## Deployed Contracts
 
-## Install Dependencies
+### Ethereum Classic (Chain ID: 61)
 
-`yarn`
+| Contract | Address |
+|----------|---------|
+| Factory | [`0x0307cd3D7DA98A29e6Ed0D2137be386Ec1e4Bc9C`](https://etc.blockscout.com/address/0x0307cd3D7DA98A29e6Ed0D2137be386Ec1e4Bc9C) |
+| INIT_CODE_HASH | `0xb5e58237f3a44220ffc3dfb989e53735df8fcd9df82c94b13105be8380344e52` |
 
-## Compile Contracts
+### Mordor Testnet (Chain ID: 63)
 
-`yarn compile`
+| Contract | Address |
+|----------|---------|
+| Factory | [`0x212eE1B5c8C26ff5B2c4c14CD1C54486Fe23ce70`](https://etc-mordor.blockscout.com/address/0x212eE1B5c8C26ff5B2c4c14CD1C54486Fe23ce70) |
+| INIT_CODE_HASH | `0x4d8a51f257ed377a6ac3f829cd4226c892edbbbcb87622bcc232807b885b1303` |
 
-## Run Tests
+## Key Contracts
 
-`yarn test`
+- **UniswapV2Factory.sol** — Creates and tracks trading pairs
+- **UniswapV2Pair.sol** — Constant-product AMM pair with flash swap support
+- **UniswapV2ERC20.sol** — LP token implementation with permit (EIP-2612)
+
+## Related Repos
+
+- [v2-periphery](https://github.com/etcswap/v2-periphery) — Router and library contracts
+- [v2-interface](https://github.com/etcswap/v2-interface) — Trading frontend
+- [sdks](https://github.com/etcswap/sdks) — TypeScript SDK monorepo
+
+## Local Development
+
+```bash
+yarn install
+yarn compile
+yarn test
+```
+
+Solidity 0.5.16. Requires Node.js 10+.
